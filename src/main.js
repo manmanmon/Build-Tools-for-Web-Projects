@@ -1,8 +1,16 @@
 import { diffDates, diffToHtml } from "./datecalc.js";
 import { formatError } from "./utils.js";
+import { switcher } from "./switch.js";
 
 const dateCalcForm = document.getElementById("datecalc");
 const dateCalcResult = document.getElementById("datecalc__result");
+const timerRun = document.getElementById("timer_run");
+const timerStop = document.getElementById("timer_stop");
+const timeOutput = document.getElementById("time_output");
+const timeInput = document.getElementById("time_input");
+
+timerTitle.addEventListener("click", switcher);
+calcTitle.addEventListener("click", switcher);
 
 dateCalcForm.addEventListener("submit", handleCalcDates);
 
@@ -19,11 +27,6 @@ function handleCalcDates(event) {
         datecalc__result.innerHTML = diffToHtml(diff);
     } else datecalc__result.innerHTML = formatError("Для расчета промежутка необходимо заполнить оба поля");
 }
-
-const timerRun = document.getElementById("timer_run");
-const timerStop = document.getElementById("timer_stop");
-const timeOutput = document.getElementById("time_output");
-const timeInput = document.getElementById("time_input");
 
 var sound = new Howl({
     src: ['sounds/sound.mp3']
@@ -75,4 +78,3 @@ function startTimer(event) {
         timeOutput.innerHTML = "00:00:00";
     }
 }
-
