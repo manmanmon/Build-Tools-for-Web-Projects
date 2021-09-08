@@ -1,6 +1,11 @@
+import { formatError } from "./utils.js";
 import { DateTime } from "https://moment.github.io/luxon/es6/luxon.min.js";
+import { switcher } from "./switch.js";
+const dateCalcResult = document.getElementById("datecalc__result");
 
-export function diffDates(firstDate, secondDate) {
+calcTitle.addEventListener("click", switcher);
+
+function diffDates(firstDate, secondDate) {
     firstDate = DateTime.fromISO(firstDate);
     secondDate = DateTime.fromISO(secondDate);
 
@@ -18,3 +23,17 @@ export const diffToHtml = diff => `
         ${diff.days ? 'Дней: ' + diff.days : ''}
     </span>
 `;
+
+export function handleCalcDates(event) {
+
+    dateCalcResult.innerHTML = "";
+    event.preventDefault();
+
+    let { firstDate, secondDate } = event.target.elements;
+    firstDate = firstDate.value, secondDate = secondDate.value;
+
+    if (firstDate && secondDate) {
+        const diff = diffDates(firstDate, secondDate);
+        datecalc__result.innerHTML = diffToHtml(diff);
+    } else datecalc__result.innerHTML = formatError("Для расчета промежутка необходимо заполнить оба поля");
+}
