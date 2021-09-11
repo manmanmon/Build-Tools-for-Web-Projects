@@ -1,5 +1,5 @@
 import { switcher } from "./switch.js";
-//import timerSound from "./sounds/sound.mp3"
+import { Howl } from "howler";
 const timerStop = document.getElementById("timer_stop");
 const timeOutput = document.getElementById("time_output");
 const timeInput = document.getElementById("time_input");
@@ -7,7 +7,6 @@ const timeInput = document.getElementById("time_input");
 timerTitle.addEventListener("click", switcher);
 
 var sound = new Howl({
-    //timerSound
     src: [require("./sounds/sound.mp3")]
 });
 
