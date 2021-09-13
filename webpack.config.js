@@ -2,9 +2,7 @@ const path = require("path")
 const HTMLWebpackPlugin = require("html-webpack-plugin") //подключаем плагин в вебпак (подключаем класс, поэтому с большой буквы)
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
-const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer")
 const OptimizeCssAssetWebpackPlugin = require("optimize-css-assets-webpack-plugin")
-const TerserWebpackPlugin = require("terser-webpack-plugin")
 const { config } = require("process")
 
 const isDev = process.env.NODE_ENV === "development"
@@ -18,7 +16,6 @@ const optimization = () => {
     if (isProd){
         config.minimizer = [
             new OptimizeCssAssetWebpackPlugin(),
-            new TerserWebpackPlugin()
         ]
     }
     return config
@@ -48,8 +45,7 @@ module.exports = {
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: "[name].[contenthash].css"
-        }),
-        new BundleAnalyzerPlugin()
+        })
     ],
     module: {
         rules: [
