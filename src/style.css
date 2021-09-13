@@ -1,0 +1,30 @@
+.title {
+    display: flex;
+    padding-bottom: 20px;
+}
+
+.calcTitle {
+    margin-right: 20px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background: none;
+}
+
+.timerTitle {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.show {
+    background: blanchedalmond;
+}
+
+
+
